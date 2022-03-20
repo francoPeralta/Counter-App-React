@@ -1,41 +1,35 @@
-/* 
-
-    TAREA
-
-    1. Crear un nuevo componente dentro de la carpeta SRC llamado CounterApp
-
-    2. El CounterApp debe de ser un Functional Component
-
-    3. El contenido del CounterApp debe de ser:
-
-        <h1>CounterApp</h1>
-        <h2> { value } </h2>
-    4. Donde "value" es una propiedad enviada desde el padre hacia el componente CounterApp (Debe ser númerica validada con PropTypes)
-
-    5. Reemplazar en el index.js el componente de por el componente (no se olviden del value que debe de ser un número)
-
-    6. Asegúrense de no tener errores ni warnings (Cualquier warning no usado, comentar el código)
-
-*/
-
-//Con "rafcp" podemos crear un functional component facilmente
-
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-    const CounterApp = ( { value } ) => {
+    const CounterApp = ( { value = 10 } ) => {
+
+        const [ counter, setCounter ] = useState( value ); // []
+        
 
         //handleAdd
-        const handleAdd = (e) => {
-            console.log(e)
+        const handleAdd = () => {
+            setCounter( counter + 1); //no funciona el ++
+            //setCounter( (c) => c + 1);
+        }
+
+        //handleReset
+        const handleReset = () => {
+            setCounter( value ); 
+        }
+
+        //handleSubstract
+        const handleSubtract = () => {
+            setCounter( counter - 1); 
         }
         
         return (
             <>
                 <h1>CounterApp</h1>
-                <h2>{ value }</h2>
+                <h2>{ counter }</h2>
 
                 <button onClick={ handleAdd }>+1</button> 
+                <button onClick={ handleReset }>Reset</button> 
+                <button onClick={ handleSubtract }>-1</button> 
             </>
                 //onClick={ (e) => handleAdd(e) } es lo mismo que arriba
         );
