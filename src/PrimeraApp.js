@@ -9,7 +9,7 @@ const PrimeraApp = ( { saludo, subtitulo = "Soy un subtitulo" } ) => {
     return (
         <>
             <h1> { saludo } </h1>
-            <p> { subtitulo }</p>
+            <p> { subtitulo } </p>
         </>
     );
 }
